@@ -1,0 +1,21 @@
+id,name,lastname,gender,idfather,isdead,typemagic
+1,Åsa,Wennam,F,1,false,true
+2,Eléa,Egdell,M,2,true,false
+3,Séverine,Le Brum,M,3,true,false
+4,Bénédicte,Pentelow,F,4,false,false
+5,Mà,Chantree,F,5,true,true
+6,Måns,Kingscote,F,6,false,false
+7,Noémie,Rutt,M,7,false,true
+8,Maéna,Commucci,M,8,true,false
+9,Léandre,Vonderdell,F,9,true,false
+10,Camélia,Dredge,F,10,false,false
+11,Eugénie,Canape,M,11,true,false
+12,Liè,Ferrari,M,12,false,true
+13,Bérangère,Keeltagh,M,13,false,false
+14,Océane,Sibthorp,F,14,false,false
+15,Stéphanie,Gardner,M,15,true,false
+16,Kuí,Uebel,M,16,true,false
+17,Vénus,Stapley,F,17,false,false
+18,Mà,Jahan,F,18,false,false
+19,Bérengère,Davidai,F,19,true,false
+20,Andréa,Rysdale,F,20,false,false
