@@ -24,3 +24,15 @@ Mago* crearMago(string datos[]) {
     nuevo->hechizos = nullptr;
     return nuevo;
 }
+void insertar(Mago*& raiz, Mago* nuevo) {
+    if (!raiz) raiz = nuevo;
+    else if (nuevo->id < raiz->id) insertar(raiz->left, nuevo);    
+    else insertar(raiz->right, nuevo);
+}
+
+Mago* buscarPorId(Mago* raiz, int id) {
+    if (!raiz) return nullptr;
+    if (raiz->id == id) return raiz;  
+    if (id < raiz->id) return buscarPorId(raiz->left, id);
+    return buscarPorId(raiz->right, id);
+}
