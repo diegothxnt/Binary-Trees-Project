@@ -97,3 +97,32 @@ Mago* encontrarSucesor(Mago* raiz, Mago* actual) {  // yo
 
     return mujerMasJoven;
 }
+void cargarHechizos(Mago* raiz) {
+    ifstream archivo("bin/hechizos.csv");
+    if (!archivo) {
+        cout << "No se pudo abrir el archivo hechizos.csv" << endl;  
+        return;
+    }
+
+    string linea;
+    getline(archivo, linea); // yo
+
+    while (getline(archivo, linea)) {
+        size_t pos1 = linea.find(',');
+        size_t pos2 = linea.find(',', pos1+1);
+        
+        int id_mago = stoi(linea.substr(0, pos1));
+        string nombre = linea.substr(pos1+1, pos2-pos1-1);
+        string descripcion = linea.substr(pos2+1);
+
+        Mago* mago = buscarPorId(raiz, id_mago);
+        if (mago) {
+            Hechizo* nuevo = new Hechizo();
+            nuevo->id_mago = id_mago;
+            nuevo->nombre = nombre;
+            nuevo->descripcion = descripcion;
+            nuevo->next = mago->hechizos;
+            mago->hechizos = nuevo;
+        }
+    }
+}
