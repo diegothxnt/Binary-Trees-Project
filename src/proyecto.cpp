@@ -254,4 +254,51 @@ void cargarDatos(Mago*& raiz) {
     cargarHechizos(raiz);
     cout << "Datos cargados correctamente" << endl;
 }
+int main() {
+    Mago* raiz = nullptr;
+    cargarDatos(raiz);
+
+    int opcion;
+    do {
+        cout << "\nMenu del Hechizo del Mago\n";
+        cout << "1. Mostrar linea de sucesion\n";
+        cout << "2. Asignar nuevo dueno (simular muerte)\n";
+        cout << "3. Modificar mago\n";
+        cout << "4. Mostrar hechizos de un mago\n";
+        cout << "5. Salir\n";
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+                cout << "\nLinea de sucesion actual:\n";
+                mostrarSucesion(raiz);
+                break;
+            case 2: {
+                Mago* dueño = buscarDueñoActual(raiz);
+                if (dueño) {
+                    cout << "Simulando muerte de " << dueño->name << endl;
+                    dueño->is_dead = true;
+                    asignarNuevoDueño(raiz);
+                } else {
+                    cout << "No hay dueno actual" << endl;
+                }
+                break;
+            }
+            case 3:
+                modificarMago(raiz);
+                break;
+            case 4:
+                mostrarHechizos(raiz);
+                break;
+            case 5:
+                cout << "Saliendo...\n";
+                break;
+            default:
+                cout << "Opcion no valida\n";
+        }
+    } while (opcion != 5);
+
+    return 0;
+}
 
