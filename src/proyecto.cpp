@@ -232,6 +232,7 @@ void cargarDatos(Mago*& raiz) {
         cout << "No se pudo abrir el archivo magos.csv" << endl;
         return;
     }
+
     string linea;
     getline(archivo, linea); 
 
@@ -241,16 +242,17 @@ void cargarDatos(Mago*& raiz) {
         size_t inicio = 0;
         size_t fin = linea.find(',');
 
-        while (fin != string::npos) {
+        while (fin != string::npos && pos < 9) {
             datos[pos++] = linea.substr(inicio, fin - inicio);
             inicio = fin + 1;
             fin = linea.find(',', inicio);
         }
         datos[pos] = linea.substr(inicio);
 
-        Mago* nuevo = crearMago(datos); 
+        Mago* nuevo = crearMago(datos);
         insertar(raiz, nuevo);
     }
+
     cargarHechizos(raiz);
     cout << "Datos cargados correctamente" << endl;
 }
