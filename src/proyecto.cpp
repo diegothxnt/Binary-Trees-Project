@@ -36,3 +36,64 @@ Mago* buscarPorId(Mago* raiz, int id) {
     if (id < raiz->id) return buscarPorId(raiz->left, id);
     return buscarPorId(raiz->right, id);
 }
+Mago* encontrarSucesor(Mago* raiz, Mago* actual) {  // yo
+    if (!raiz || !actual) return nullptr;
+
+    
+    for (Mago* temp = raiz; temp; ) {
+        if (temp->id_father == actual->id && !temp->is_dead) {
+            if (temp->type_magic == "elemental" || temp->type_magic == "unique") return temp;
+        }
+        if (actual->id < temp->id) temp = temp->left;
+        else temp = temp->right;
+    }
+
+    
+    for (Mago* temp = raiz; temp; ) {
+        if (temp->id_father == actual->id && !temp->is_dead && temp->type_magic == "mixed") return temp;
+        if (actual->id < temp->id) temp = temp->left;
+        else temp = temp->right;
+    }
+
+    
+    for (Mago* temp = raiz; temp; ) {
+        if (temp->id_father == actual->id && !temp->is_dead && temp->gender == 'H') return temp;
+        if (actual->id < temp->id) temp = temp->left;
+        else temp = temp->right;
+    }
+
+    
+    Mago* maestro = buscarPorId(raiz, actual->id_father);
+    if (maestro) {
+        for (Mago* temp = raiz; temp; ) {
+            if (temp->id_father == maestro->id && temp->id != actual->id && !temp->is_dead) {
+                return temp;
+            }
+            if (maestro->id < temp->id) temp = temp->left;
+            else temp = temp->right;
+        }
+    }
+
+    
+    Mago* mujerMasJoven = nullptr;
+    for (Mago* temp = raiz; temp; ) {
+        if (temp->gender == 'M' && !temp->is_dead) {
+            bool tieneDiscipulos = false;
+            for (Mago* d = raiz; d; ) {
+                if (d->id_father == temp->id && !d->is_dead) {
+                    tieneDiscipulos = true;
+                    break;
+                }
+                if (temp->id < d->id) d = d->left;
+                else d = d->right;
+            }
+            if (tieneDiscipulos && (!mujerMasJoven || temp->age < mujerMasJoven->age)) {
+                mujerMasJoven = temp;
+            }
+        }
+        if (temp->id > 0) temp = temp->left;
+        else temp = temp->right;
+    }
+
+    return mujerMasJoven;
+}
