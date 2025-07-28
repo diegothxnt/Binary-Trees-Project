@@ -128,6 +128,19 @@ Mago* encontrarSucesor(Mago* raiz, Mago* actual) {
 
     return mujerMasJoven;
 }
+void asignarNuevoDueño(Mago* raiz) {
+    Mago* dueñoActual = buscarDueñoActual(raiz);
+    if (!dueñoActual || !dueñoActual->is_dead) return;
+
+    Mago* sucesor = encontrarSucesor(raiz, dueñoActual);
+    if (sucesor) { 
+        dueñoActual->is_owner = false;
+        sucesor->is_owner = true;
+        cout << "Nuevo dueno asignado: " << sucesor->name << " " << sucesor->last_name << endl;
+    } else {
+        cout << "No se pudo asignar un nuevo dueno automaticamente" << endl;
+    }
+}
 void cargarHechizos(Mago* raiz) {
     ifstream archivo("bin/hechizos.csv");
     if (!archivo) {
