@@ -141,6 +141,36 @@ void asignarNuevoDueño(Mago* raiz) {
         cout << "No se pudo asignar un nuevo dueno automaticamente" << endl;
     }
 }
+void modificarMago(Mago* raiz) {
+    int id;
+    cout << "Ingrese ID del mago a modificar: ";
+    cin >> id;
+
+    Mago* mago = buscarPorId(raiz, id);
+    if (!mago) { 
+        cout << "Mago no encontrado" << endl;
+        return;
+    }
+
+    cout << "Modificando a " << mago->name << " " << mago->last_name << endl;
+    cout << "Nuevo nombre (actual: " << mago->name << "): ";
+    cin >> mago->name;
+    cout << "Nuevo apellido (actual: " << mago->last_name << "): ";
+    cin >> mago->last_name;
+    cout << "Nuevo genero (H/M) (actual: " << mago->gender << "): ";
+    cin >> mago->gender;
+    cout << "Nueva edad (actual: " << mago->age << "): ";
+    cin >> mago->age;
+    cout << "Esta muerto? (1/0) (actual: " << mago->is_dead << "): ";
+    cin >> mago->is_dead;
+    cout << "Tipo de magia (elemental/unique/mixed/no_magic) (actual: " << mago->type_magic << "): ";
+    cin >> mago->type_magic;
+
+    if (mago->is_dead && mago->is_owner) {
+        mago->is_owner = false;
+        asignarNuevoDueño(raiz);
+    }
+}
 void cargarHechizos(Mago* raiz) {
     ifstream archivo("bin/hechizos.csv");
     if (!archivo) {
