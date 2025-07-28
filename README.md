@@ -7,6 +7,7 @@ Objetivo del Proyecto
 Desarrollar un programa que simule el comportamiento de dicho hechizo siguiendo reglas complejas de sucesión, herencia mágica y relaciones familiares, partiendo de un archivo .csv con información sobre los magos.
 
 Funcionalidades Clave
+
 🌳 Conversión automática del .csv a un árbol binario mágico.
 
 👑 Determinación de la línea de sucesión actual (solo magos vivos).
