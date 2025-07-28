@@ -61,11 +61,11 @@ void mostrarSucesion(Mago* raiz) {
     mostrarSucesion(raiz->right);
 }
 Mago* buscarDueñoActual(Mago* raiz) {
-    if (!raiz) return nullptr 
-
-    Mago* izquierda = buscarDueñoActual(raiz->left);
+    if (!raiz) return nullptr;
+    if (raiz->is_owner) return raiz;
+    Mago* izquierda = buscarDueñoActual(raiz->left); 
     if (izquierda) return izquierda;
-    return nullptr;
+    return buscarDueñoActual(raiz->right);
 }
 Mago* encontrarSucesor(Mago* raiz, Mago* actual) {  
     if (!raiz || !actual) return nullptr;
