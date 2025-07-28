@@ -105,7 +105,7 @@ void cargarHechizos(Mago* raiz) {
     }
 
     string linea;
-    getline(archivo, linea); // yo
+    getline(archivo, linea); 
 
     while (getline(archivo, linea)) {
         size_t pos1 = linea.find(',');
@@ -124,5 +124,31 @@ void cargarHechizos(Mago* raiz) {
             nuevo->next = mago->hechizos;
             mago->hechizos = nuevo;
         }
+    }
+}
+void mostrarHechizos(Mago* raiz) {
+    int id;
+    cout << "Ingrese ID del mago: ";
+    cin >> id;
+
+    Mago* mago = buscarPorId(raiz, id);
+    if (!mago) {
+        cout << "Mago no encontrado" << endl;
+        return;
+    }
+
+    cout << "\nHechizos de " << mago->name << " " << mago->last_name << ":\n";
+    cout << "Tipo de magia: " << mago->type_magic << "\n\n";
+
+    if (!mago->hechizos) {
+        cout << "Este mago no tiene hechizos registrados\n";
+        return;
+    }
+
+    Hechizo* actual = mago->hechizos;
+    while (actual) {
+        cout << "Hechizo: " << actual->nombre << "\n";
+        cout << "Descripcion: " << actual->descripcion << "\n\n";
+        actual = actual->next;
     }
 }
