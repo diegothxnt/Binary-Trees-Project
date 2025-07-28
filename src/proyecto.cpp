@@ -8,6 +8,20 @@ struct Hechizo {
     string descripcion;
     Hechizo* next;
 };
+struct Mago {
+    int id;
+    string name;
+    string last_name; 
+    char gender;
+    int age;
+    int id_father;
+    bool is_dead;
+    string type_magic;
+    bool is_owner;
+    Mago* left;
+    Mago* right;
+    Hechizo* hechizos;
+};
 
 Mago* crearMago(string datos[]) {
     Mago* nuevo = new Mago();
