@@ -50,6 +50,16 @@ Mago* buscarPorId(Mago* raiz, int id) {
     if (id < raiz->id) return buscarPorId(raiz->left, id);
     return buscarPorId(raiz->right, id);
 }
+void mostrarSucesion(Mago* raiz) {
+    if (!raiz) return;
+    if (!raiz->is_dead) {
+        cout << raiz->name << " " << raiz->last_name;
+        if (raiz->is_owner) cout << " (Dueno actual)";
+        cout << endl;
+    }
+    mostrarSucesion(raiz->left); 
+    mostrarSucesion(raiz->right);
+}
 Mago* encontrarSucesor(Mago* raiz, Mago* actual) {  // yo
     if (!raiz || !actual) return nullptr;
 
