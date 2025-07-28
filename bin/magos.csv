@@ -1,0 +1,15 @@
+id,name,last_name,gender,age,id_father,is_dead,type_magic,is_owner
+1,Jose,ElSabio,H,120,0,0,elemental,1
+2,Maradona,ElGris,H,201,1,0,unique,0
+3,Rodolfo,ElBlanco,H,150,1,1,mixed,0
+4,Radagast,ElPardo,H,180,1,0,elemental,0
+5,Maria,DamaBlanca,M,3000,2,0,unique,0
+6,Elrond,MedioElfo,H,2500,2,0,elemental,0
+7,Arwen,Undomiel,M,2800,6,0,no_magic,0
+8,Aragorn,Elessar,H,87,6,0,no_magic,0
+9,Messi,VerdeHoja,H,500,4,0,unique,0
+10,Gimli,Enano,H,139,4,1,no_magic,0
+11,Frodo,Bolson,H,50,5,0,no_magic,0
+12,Sam,Gamyi,H,38,5,0,no_magic,0
+13,Fer,LaHechicera,M,45,3,0,mixed,0
+14,Josefina,Shieldmaiden,M,24,8,0,no_magic,0
